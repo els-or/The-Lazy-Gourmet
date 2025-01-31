@@ -1,0 +1,65 @@
+The Lazy Gourmet
+
+    Wireframe
+    FIle Structure 
+    Pages - 
+        Select User 
+        Recipe Recall 
+        Main Page 
+    Redirect Functions
+
+
+
+
+    USER STORY:
+        AS A boujie lazy hungry person
+        I WANT recipes to cook delivered in a fun fancy manner 
+        SO THAT I can explore new foods
+
+    ACCEPTANCE CRITERIA: 
+        GIVEN a user selection page 
+        WHEN I type in my username and click submit
+        THEN I am redirected to the main page with blank inputs and no recipe displayed
+        WHEN I input data for ingredients, number of people, and special requests/occasion*, please checkbox, and press submit
+        THEN a recipe is generated and displayed alongside nutrition facts
+        WHEN user attempts to submit without all required fields
+        THEN an error message is displayed specifying the fields required
+        WHEN the history button is clicked 
+        THEN I am redirected to a list of previous recipes 
+        WHEN I select a recipe from the list
+        THEN I am redirected to the main page, with the selected recipe and facts loaded below 
+        WHEN the change user button is clicked 
+        THEN I am redirected to the user selection page 
+
+
+
+
+
+    Project Requirements:
+        Use Node.js and Express.js to create a RESTful API.
+
+        Use React for the front end.
+
+        Use PostgreSQL and the Sequelize ORM for the database.
+
+        Have both GET and POST routes for retrieving and adding new data.
+
+        Use at least two server-side APIs.
+
+        Have a folder structure that follows the separation of concerns design principle.
+
+        Include authentication using JWT.
+
+        Protect API keys and sensitive information with environment variables.
+
+        Be deployed using Render (with data).
+
+        Have a polished UI.
+
+        Be responsive.
+
+        Be interactive (in other words, accept and respond to user input).
+
+        Meet good-quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, and so on).
+
+        Have a professional README (with unique name, description, technologies used, screenshot, and link to deployed application).
