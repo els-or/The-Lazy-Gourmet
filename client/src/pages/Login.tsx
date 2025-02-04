@@ -42,6 +42,7 @@ const Login = () => {
             name='username'
             value={loginData.username || ''}
             onChange={handleChange}
+            placeholder='username'
           />
         </div>
         <div className='form-group'>
@@ -52,6 +53,7 @@ const Login = () => {
             name='password'
             value={loginData.password || ''}
             onChange={handleChange}
+            placeholder='password'
           />
         </div>
         <div className='form-group'>

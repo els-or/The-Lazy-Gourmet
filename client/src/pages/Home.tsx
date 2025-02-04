@@ -47,7 +47,7 @@ const Home = () => {
                 !loginCheck ? (
                     <div className='login-notice'>
                         <h1>
-                            Login to view all your friends!
+                            Welcome to Lazy Gourment Selection Screen!
                         </h1>
                     </div>
                 ) : (
