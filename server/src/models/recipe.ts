@@ -22,7 +22,7 @@ import {
     type CreationOptional,
     DataTypes,
     type Sequelize,
-    ForeignKey,
+    type ForeignKey,
   } from 'sequelize';
 
 import { User } from './user';
