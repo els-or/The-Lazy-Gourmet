@@ -25,7 +25,7 @@ import {
   } from 'sequelize';
 
   export class recipe extends Model<InferAttributes<recipe>,
-  InferCreationAttributes<recipe>
+  InferCreationAttributes<recipe>>
   {
     declare id: CreationOptional<number>;
     declare numOfpeople: string;
@@ -62,6 +62,7 @@ import {
 
 
       },
+    },
 
       {
         sequelize,
