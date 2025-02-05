@@ -21,8 +21,8 @@ import {
     type InferCreationAttributes,
     type CreationOptional,
     DataTypes,
-    type Sequelize,
-    ForeignKey,
+    type Sequelize, 
+    type ForeignKey,
   } from 'sequelize';
 
 import { User } from './user';
