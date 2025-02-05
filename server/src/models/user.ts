@@ -18,6 +18,7 @@ export class User
   public username!: string;
   public email!: string;
   public password!: string;
+  public history!: string[];
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;

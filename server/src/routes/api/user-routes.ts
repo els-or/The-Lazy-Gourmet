@@ -63,6 +63,34 @@ router.put('/:id', async (req: Request, res: Response) => {
   }
 });
 
+//PUT/users/:id
+router.put('/:id/history', async(req:Request, res: Response) => {
+
+const {id} = req.params;
+
+try{
+
+   const userHistory = await User.findByPk(id);
+   if( userHistory)
+   {
+
+    userHistory.history.push(req.body.history);
+    await userHistory.save();
+    res.json(userHistory);
+   }
+
+}
+catch(err)
+{
+
+  console.log(err);
+
+
+}
+
+});
+
+
 // DELETE /users/:id - Delete a user by id
 router.delete('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
