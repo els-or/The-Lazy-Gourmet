@@ -27,8 +27,8 @@ import {
 
 import { User } from './user';
 
-  export class recipe extends Model<InferAttributes<recipe>,
-  InferCreationAttributes<recipe>>
+  export class Recipe extends Model<InferAttributes<Recipe>,
+  InferCreationAttributes<Recipe>>
   {
     declare id: CreationOptional<number>;
     declare numOfpeople: string;
@@ -40,7 +40,7 @@ import { User } from './user';
 
   export function RecipeFactory(sequelize: Sequelize)
   {
-    recipe.init(
+    Recipe.init(
     {
       id: { 
       type: DataTypes.INTEGER,
@@ -80,6 +80,6 @@ import { User } from './user';
   );
 
    
-  return recipe;
+  return Recipe;
     
 }
