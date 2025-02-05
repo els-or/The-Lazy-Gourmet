@@ -22,7 +22,10 @@ import {
     type CreationOptional,
     DataTypes,
     type Sequelize,
+    ForeignKey,
   } from 'sequelize';
+
+import { User } from './user';
 
   export class recipe extends Model<InferAttributes<recipe>,
   InferCreationAttributes<recipe>>
@@ -31,10 +34,11 @@ import {
     declare numOfpeople: string;
     declare receipeName: string;
     declare instruction: string;
+    declare userRecipeRefID: ForeignKey<User['id']>;
     
   }
 
-  export function AuthorFactory(sequelize: Sequelize)
+  export function RecipeFactory(sequelize: Sequelize)
   {
     recipe.init(
     {
