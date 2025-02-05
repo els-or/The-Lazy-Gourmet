@@ -24,7 +24,7 @@ import {
     type Sequelize,
     ForeignKey,
   } from 'sequelize';
-  
+
 import { User } from './user';
 
   export class recipe extends Model<InferAttributes<recipe>,
@@ -34,7 +34,7 @@ import { User } from './user';
     declare numOfpeople: string;
     declare receipeName: string;
     declare instruction: string;
-    declare recipeRefID: ForeignKey<User['id']>;
+    declare userRecipeRefID: ForeignKey<User['id']>;
     
   }
 
