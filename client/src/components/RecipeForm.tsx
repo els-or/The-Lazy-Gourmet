@@ -1,27 +1,35 @@
 import React, { useState } from "react";
 
+async function createRecipe(data: any) {
+  const response = await fetch("/api/recipe", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  let results = await response.json();
+  return results;
+}
 
-export default function RecipeForm() {
+export default function RecipeForm(props: any) {
   const [ingredients, setIngredients] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const [additionalRequests, setAdditionalRequests] = useState("");
   const [sayPlease, setSayPlease] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    alert(`check console log`);
-    fetch("/api/recipe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    try {
+      let recipe = await createRecipe({
         ingredients,
         numberOfPeople,
         additionalRequests,
-        sayPlease,
-      }),
-    });
+      });
+      props.updateRecipe(recipe);
+    } catch (error) {
+      console.error("Failed to create recipe:", error);
+    }
   };
 
   return (

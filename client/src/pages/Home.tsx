@@ -6,11 +6,18 @@ import UserList from "../components/Users";
 import auth from "../utils/auth";
 import RecipeForm from "../components/RecipeForm";
 import RecipeHistory from "../components/RecipeHistory";
+import DisplayRecipe from "../components/DisplayRecipe.tsx";
 
 const Home = () => {
   const [users, setUsers] = useState<UserData[]>([]);
   const [error, setError] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
+
+  const [recipe, setRecipe] = useState<any>();
+
+  function updateRecipe(data: any) {
+    setRecipe(data);
+  }
 
   useEffect(() => {
     if (loginCheck) {
@@ -46,12 +53,14 @@ const Home = () => {
     <>
       {!loginCheck ? (
         <div className="login-notice">
-          <h1>Welcome to Lazy Gourment Selection Screen!</h1>
+          <h1>Please login to view this page</h1>
         </div>
       ) : (
-        <UserList users={users} />
+        <>
+          <RecipeForm updateRecipe={updateRecipe} />
+          <DisplayRecipe recipe={recipe} />
+        </>
       )}
-      <RecipeForm />
       <RecipeHistory />
     </>
   );
