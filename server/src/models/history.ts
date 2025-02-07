@@ -20,6 +20,7 @@ InferCreationAttributes<History>>
   declare instruction: string;
   declare userRecipeRefID: ForeignKey<User['id']>;
   
+  
 }
 
   export function HistoryFactory(sequelize: Sequelize)
