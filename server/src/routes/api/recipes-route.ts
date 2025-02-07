@@ -19,8 +19,7 @@ router.post('/', async (req: Request, res: Response) => {
         ],
         });
     
-        completion.then((result) => console.log(result.choices[0].message));
-    res.send('Recipe received');
+        completion.then((result) => res.send(result.choices[0].message));
 });
 
 
