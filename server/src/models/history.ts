@@ -22,3 +22,48 @@ InferCreationAttributes<History>>
   
 }
 
+  export function HistoryFactory(sequelize: Sequelize)
+  {
+    History.init(
+    {
+      id: { 
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      },
+
+      numOfpeople: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
+
+      receipeName: {
+
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
+      instruction: {
+        type: DataTypes.STRING,
+        allowNull: false,
+
+
+      },
+    },
+
+      {
+        sequelize,
+        timestamps: false,
+        underscored: true,
+        modelName: 'history',
+      }
+
+
+
+  );
+
+   
+  return History;
+    
+}
