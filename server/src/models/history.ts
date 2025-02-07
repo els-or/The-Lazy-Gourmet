@@ -20,5 +20,6 @@ InferCreationAttributes<History>>
   declare instruction: string;
   declare userRecipeRefID: ForeignKey<User['id']>;
   
+  
 }
 

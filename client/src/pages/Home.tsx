@@ -5,6 +5,7 @@ import ErrorPage from "./ErrorPage";
 import UserList from "../components/Users";
 import auth from "../utils/auth";
 import RecipeForm from "../components/RecipeForm";
+import RecipeHistory from "../components/RecipeHistory";
 
 const Home = () => {
   const [users, setUsers] = useState<UserData[]>([]);
@@ -51,6 +52,7 @@ const Home = () => {
         <UserList users={users} />
       )}
       <RecipeForm />
+      <RecipeHistory />
     </>
   );
 };
