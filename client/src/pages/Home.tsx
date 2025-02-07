@@ -13,9 +13,9 @@ const Home = () => {
   const [error, setError] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
 
-  const [recipe, setRecipe] = useState<any>();
+  const [recipe, setRecipe] = useState<string>();
 
-  function updateRecipe(data: any) {
+  function updateRecipe(data: string) {
     setRecipe(data);
   }
 
@@ -59,6 +59,7 @@ const Home = () => {
         <>
           <RecipeForm updateRecipe={updateRecipe} />
           <DisplayRecipe recipe={recipe} />
+          <UserList users = {users} />
         </>
       )}
       <RecipeHistory />

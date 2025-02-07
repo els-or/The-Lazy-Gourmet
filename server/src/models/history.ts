@@ -3,8 +3,8 @@ import {
     type InferAttributes,
     type InferCreationAttributes,
     type CreationOptional,
-    // DataTypes,
-    // type Sequelize, 
+    DataTypes,
+    type Sequelize, 
     type ForeignKey,
   } from 'sequelize';
 
