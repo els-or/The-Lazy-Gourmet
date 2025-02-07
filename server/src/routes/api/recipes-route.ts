@@ -33,7 +33,9 @@ const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 const API_KEY = process.env.OPENAI_API_KEY;
 
 router.post("/recipe-router", async (req: Request, res: Response) => {
-  try {
+    const formData = req.body;
+    console.log(formData);
+    try {
     const response = await fetch(OPENAI_API_URL, {
       method: "POST",
       headers: {
