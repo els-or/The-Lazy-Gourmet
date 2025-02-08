@@ -1,15 +1,15 @@
 import { useState, useEffect, useLayoutEffect } from "react";
-import { retrieveUsers } from "../api/userAPI";
-import type { UserData } from "../interfaces/UserData";
+//import { retrieveUsers } from "../api/userAPI";
+//import type { UserData } from "../interfaces/UserData";
 import ErrorPage from "./ErrorPage";
-import UserList from "../components/Users";
+//import UserList from "../components/Users";
 import auth from "../utils/auth";
 import RecipeForm from "../components/RecipeForm";
 import RecipeHistory from "../components/RecipeHistory";
 import DisplayRecipe from "../components/DisplayRecipe.tsx";
 
 const Home = () => {
-  const [users, setUsers] = useState<UserData[]>([]);
+  //const [users, setUsers] = useState<UserData[]>([]);
   const [error, setError] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
 
@@ -20,14 +20,21 @@ const Home = () => {
   }
 
   useEffect(() => {
-    if (loginCheck) {
-      fetchUsers();
-    }
+  if (loginCheck) {
+      //fetchUsers();
+     
+      setError(false);
+      
+      
+   }
   }, [loginCheck]);
 
-  useLayoutEffect(() => {
-    checkLogin();
-  }, []);
+  
+ useLayoutEffect(() => {
+
+  checkLogin();
+    
+ }, []);
 
   const checkLogin = () => {
     if (auth.loggedIn()) {
@@ -35,18 +42,24 @@ const Home = () => {
     }
   };
 
-  const fetchUsers = async () => {
-    try {
-      const data = await retrieveUsers();
-      setUsers(data);
-    } catch (err) {
-      console.error("Failed to retrieve tickets:", err);
-      setError(true);
-    }
-  };
+
+
+
+  //const fetchUsers = async () => {
+  //  try {
+  //    const data = await retrieveUsers();
+   //   setUsers(data);
+
+ //  } catch (err) {
+ //     console.error("Failed to retrieve tickets:", err);
+ //    setError(true);
+ // }
+ //};
+
 
   if (error) {
     return <ErrorPage />;
+    
   }
 
   return (
@@ -57,9 +70,10 @@ const Home = () => {
         </div>
       ) : (
         <>
+          { auth.getProfile().username}
           <RecipeForm updateRecipe={updateRecipe} />
           <DisplayRecipe recipe={recipe} />
-          <UserList users = {users} />
+          {/* <UserList users = {users} /> */}
         </>
       )}
       <RecipeHistory />
