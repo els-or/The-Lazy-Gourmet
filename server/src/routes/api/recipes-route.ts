@@ -17,7 +17,7 @@ router.post('/', async (req: Request, res: Response) => {
           },
           {
             role: "user",
-            content: `I have ${formData.ingredients}, please give me a recipe plan for ${formData.numberOfPeople} people that includes these ingredients, include the following additional requests: ${formData.additionalRequests}. At the end, give me a good dessert and drink to pair with the dish.`,
+            content: `I have ${formData.ingredients}, please give me a recipe plan in JSON format for ${formData.numberOfPeople} people that includes these ingredients, include the following additional requests: ${formData.additionalRequests}. At the end, give me a good dessert and drink to pair with the dish.`,
           },
     ]
     const openai = new OpenAI({
@@ -31,7 +31,7 @@ router.post('/', async (req: Request, res: Response) => {
         messages: prompt,
       });
       console.log(completion)
-      res.send(completion.choices[0].message.content);
+      res.send({message: completion.choices[0].message.content});
     } catch {
       res.status(500).send("Internal server error");
     }
