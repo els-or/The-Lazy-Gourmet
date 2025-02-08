@@ -21,7 +21,15 @@ router.post('/', async (req: Request, res: Response) => {
           },
           {
             role: "user",
-            content: "I have chicken, rice, and broccoli, please give me a recipe plan given these ingredients.",
+            content: `I have ${formData.ingredients}, please give me a recipe plan given these ingredients.`,
+          },
+          {
+            role: "user",
+            content: `I have ${formData.numberOfPeople} people, please give me a recipe plan for this number of people.`,
+          },
+          {
+            role: "user",
+            content: `I have the following additional requests: ${formData.additionalRequests}`
           },
           {
             role: "user",
