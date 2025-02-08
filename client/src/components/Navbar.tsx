@@ -23,7 +23,6 @@ const Navbar = () => {
         {!loginCheck ? (
           <button className="btn" type="button">
             <Link to="/login">Login</Link>
-            <Link to="/history" className="text-white">History</Link>
           </button>
         ) : (
           <button
