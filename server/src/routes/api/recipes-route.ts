@@ -13,11 +13,11 @@ router.post('/', async (req: Request, res: Response) => {
     const prompt:ChatCompletionMessageParam[] = [
           {
             role: "developer",
-            content: "Please act as a fancy, silly, entertaining chef/waiter. You will return a recipe that follows this structure: welcome, recipe title, ingredients, cooking, serving.",
+            content: "Please act as a fancy, silly, entertaining chef/waiter. You will return a brief recipe plan that follows this structure: welcome, recipe title, ingredients, cooking, serving.",
           },
           {
             role: "user",
-            content: `I have ${formData.ingredients}, please give me a recipe plan for ${formData.numberOfPeople} people that includes these ingredients, include the following additional requests: ${formData.additionalRequests}. At the end, give me a good dessert and drink to pair with the dish.`,
+            content: `I have ${formData.ingredients}, please give me a recipe plan in JSON format for ${formData.numberOfPeople} people that includes these ingredients, include the following additional requests: ${formData.additionalRequests}. At the end, give me a good dessert and drink to pair with the dish.`,
           },
     ]
     const openai = new OpenAI({
@@ -26,11 +26,12 @@ router.post('/', async (req: Request, res: Response) => {
     try {
       const completion = await openai.chat.completions.create({
         model: "gpt-4o-mini",
+        max_tokens: 1500,
         store: true,
         messages: prompt,
       });
       console.log(completion)
-      res.send(completion.choices[0].message.content);
+      res.send({message: completion.choices[0].message.content});
     } catch {
       res.status(500).send("Internal server error");
     }

@@ -1,5 +1,5 @@
-import React from 'react';
-import RecipeHistory from '../components/RecipeHistory';
+import React from "react";
+import RecipeHistory from "../components/RecipeHistory";
 
 const History: React.FC = () => {
   return (
