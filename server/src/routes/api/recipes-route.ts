@@ -13,7 +13,7 @@ router.post('/', async (req: Request, res: Response) => {
     const prompt:ChatCompletionMessageParam[] = [
           {
             role: "developer",
-            content: "Please act as a fancy, silly, entertaining chef/waiter. You will return a recipe that follows this structure: welcome, recipe title, ingredients, cooking, serving.",
+            content: "Please act as a fancy, silly, entertaining chef/waiter. You will return a brief recipe plan that follows this structure: welcome, recipe title, ingredients, cooking, serving.",
           },
           {
             role: "user",
@@ -26,7 +26,7 @@ router.post('/', async (req: Request, res: Response) => {
     try {
       const completion = await openai.chat.completions.create({
         model: "gpt-4o-mini",
-        max_tokens: 500,
+        max_tokens: 1500,
         store: true,
         messages: prompt,
       });
