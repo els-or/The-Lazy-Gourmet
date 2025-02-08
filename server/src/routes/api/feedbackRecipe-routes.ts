@@ -5,7 +5,7 @@ app.use(express.json()); //parse req.body
 
 import express from 'express';
 import type {Request, Response} from 'express';
-import {Recipe} from '../../models/index';
+import {Recipe} from '../../models/index.js';
 
 const router = express.Router();
 
@@ -25,6 +25,7 @@ router.post('/', async (req: Request, res: Response) =>{
         res.status(500).json({err: 'Internal Server Error, recipe creation failed'});
 
     }
+});
 
  //Get /recipe - retrieve entire recipes
  router.get('/', async (_req: Request, res: Response) =>{
@@ -41,6 +42,7 @@ router.post('/', async (req: Request, res: Response) =>{
         res.status(500).json({err: 'Internal Server Error, no entries found!'});
 
     }
+ });
 
 // /recipe/:id - get recipe by id.
 router.get('/:id', async (req: Request, res: Response) =>{
@@ -64,10 +66,6 @@ router.get('/:id', async (req: Request, res: Response) =>{
 
 
 });
-
-
-
-
 
 export {router as feedbackRecipe};
 
