@@ -19,18 +19,21 @@ const Home = () => {
     setRecipe(data);
   }
 
-  //useEffect(() => {
-   // if (loginCheck) {
+  useEffect(() => {
+  if (loginCheck) {
       //fetchUsers();
-   //   checkLogin();
+     
+      setError(false);
       
-   // }
- // }, [loginCheck]);
-  
+      
+   }
+  }, [loginCheck]);
 
- useLayoutEffect(() => {
   
-    checkLogin();
+ useLayoutEffect(() => {
+
+  checkLogin();
+    
  }, []);
 
   const checkLogin = () => {
@@ -39,24 +42,24 @@ const Home = () => {
     }
   };
 
-  
 
 
 
-  /*const fetchUsers = async () => {
-    try {
-      //const data = await retrieveUsers();
-      //setUsers(data);
+  //const fetchUsers = async () => {
+  //  try {
+  //    const data = await retrieveUsers();
+   //   setUsers(data);
 
-    } catch (err) {
-      console.error("Failed to retrieve tickets:", err);
-      setError(true);
-    }
-  };*/
+ //  } catch (err) {
+ //     console.error("Failed to retrieve tickets:", err);
+ //    setError(true);
+ // }
+ //};
 
 
   if (error) {
     return <ErrorPage />;
+    
   }
 
   return (
@@ -67,7 +70,7 @@ const Home = () => {
         </div>
       ) : (
         <>
-          {auth.getProfile().username}
+          { auth.getProfile().username}
           <RecipeForm updateRecipe={updateRecipe} />
           <DisplayRecipe recipe={recipe} />
           {/* <UserList users = {users} /> */}
