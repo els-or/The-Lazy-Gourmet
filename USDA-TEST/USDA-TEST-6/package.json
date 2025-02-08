@@ -1,0 +1,20 @@
+{
+    "name": "usda-test-6",
+    "version": "1.0.0",
+    "description": "A TypeScript script to fetch nutrition facts from the USDA API",
+    "type": "module",
+    "main": "dist/USDA-TEST-6.js",
+    "scripts": {
+    "build": "tsc",
+    "start": "node dist/USDA-TEST-6.js"
+    },
+    "dependencies": {
+    "node-fetch": "^3.3.0"
+    },
+    "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+    },
+    "author": "MHD",
+    "license": "MIT"
+}
