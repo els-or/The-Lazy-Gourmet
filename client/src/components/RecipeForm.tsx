@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-async function createRecipe(data: any) {
+async function createRecipe(data: string) {
   const response = await fetch("/api/recipe", {
     method: "POST",
     headers: {
@@ -8,11 +8,11 @@ async function createRecipe(data: any) {
     },
     body: JSON.stringify(data),
   });
-  let results = await response.json();
+  const results = await response.json();
   return results;
 }
 
-export default function RecipeForm(props: any) {
+export default function RecipeForm(props: object) {
   const [ingredients, setIngredients] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const [additionalRequests, setAdditionalRequests] = useState("");
@@ -21,9 +21,9 @@ export default function RecipeForm(props: any) {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      let recipe = await createRecipe({
+      const recipe = await createRecipe({
         ingredients,
-        numberOfPeople,
+        numberOfPeople, 
         additionalRequests,
       });
       props.updateRecipe(recipe);
