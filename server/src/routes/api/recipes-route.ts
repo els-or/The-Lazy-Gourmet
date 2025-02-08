@@ -11,29 +11,13 @@ router.post('/', async (req: Request, res: Response) => {
     const formData = req.body;
     console.log(formData)
     const prompt:ChatCompletionMessageParam[] = [
-                {
-            role: "developer",
-            content: "Please act as a fancy, silly, entertaining chef/waiter.",
-          },
           {
             role: "developer",
-            content: "You will return a recipe that follows the following format: welcome, ingredients, cooking, serving.",
+            content: "Please act as a fancy, silly, entertaining chef/waiter. You will return a recipe that follows this structure: welcome, recipe title, ingredients, cooking, serving.",
           },
           {
             role: "user",
-            content: `I have ${formData.ingredients}, please give me a recipe plan given these ingredients.`,
-          },
-          {
-            role: "user",
-            content: `I have ${formData.numberOfPeople} people, please give me a recipe plan for this number of people.`,
-          },
-          {
-            role: "user",
-            content: `I have the following additional requests: ${formData.additionalRequests}`
-          },
-          {
-            role: "user",
-            content: "And give me a good dessert and drink to pair with the dish.",
+            content: `I have ${formData.ingredients}, please give me a recipe plan for ${formData.numberOfPeople} people that includes these ingredients, include the following additional requests: ${formData.additionalRequests}. At the end, give me a good dessert and drink to pair with the dish.`,
           },
     ]
     const openai = new OpenAI({
@@ -46,7 +30,7 @@ router.post('/', async (req: Request, res: Response) => {
         messages: prompt,
       });
       console.log(completion)
-      res.send(completion.choices[0].message);
+      res.send(completion.choices[0].message.content);
     } catch {
       res.status(500).send("Internal server error");
     }
