@@ -20,21 +20,16 @@ const Home = () => {
   }
 
   useEffect(() => {
-  if (loginCheck) {
+    if (loginCheck) {
       //fetchUsers();
-     
+
       setError(false);
-      
-      
-   }
+    }
   }, [loginCheck]);
 
-  
- useLayoutEffect(() => {
-
-  checkLogin();
-    
- }, []);
+  useLayoutEffect(() => {
+    checkLogin();
+  }, []);
 
   const checkLogin = () => {
     if (auth.loggedIn()) {
@@ -42,24 +37,19 @@ const Home = () => {
     }
   };
 
-
-
-
   //const fetchUsers = async () => {
   //  try {
   //    const data = await retrieveUsers();
-   //   setUsers(data);
+  //   setUsers(data);
 
- //  } catch (err) {
- //     console.error("Failed to retrieve tickets:", err);
- //    setError(true);
- // }
- //};
-
+  //  } catch (err) {
+  //     console.error("Failed to retrieve tickets:", err);
+  //    setError(true);
+  // }
+  //};
 
   if (error) {
     return <ErrorPage />;
-    
   }
 
   return (
@@ -70,13 +60,12 @@ const Home = () => {
         </div>
       ) : (
         <>
-          { auth.getProfile().username}
+          {auth.getProfile().username}
           <RecipeForm updateRecipe={updateRecipe} />
           <DisplayRecipe recipe={recipe} />
           {/* <UserList users = {users} /> */}
         </>
       )}
-      <RecipeHistory />
     </>
   );
 };
