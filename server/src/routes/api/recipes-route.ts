@@ -17,8 +17,12 @@ router.post('/', async (req: Request, res: Response) => {
           },
           {
             role: "user",
-            content: `I have ${formData.ingredients}, please give me a recipe plan in JSON format for ${formData.numberOfPeople} people that includes these ingredients, include the following additional requests: ${formData.additionalRequests}. At the end, give me a good dessert and drink to pair with the dish.`,
+            content: `I have ${formData.ingredients}, please give me a recipe plan for ${formData.numberOfPeople} people that includes these ingredients, include the following additional requests: ${formData.additionalRequests}. At the end, give me a good dessert and drink to pair with the dish.`,
           },
+          {
+            role: "system",
+            content: "Results must be only JSON formatted.  The JSON object must contain the following keys: recipeTitle, ingredients, cooking, serving, dessert, drink. The recipeTitle must be a string, the ingredients must be an array of strings, the cooking must be an array of strings, the serving must be a string, the dessert must be a string, and the drink must be a string.",
+          }
     ]
     const openai = new OpenAI({
       apiKey: API_KEY,
@@ -31,6 +35,9 @@ router.post('/', async (req: Request, res: Response) => {
         messages: prompt,
       });
       console.log(completion)
+      // TODO: look up nutrition information
+      // TODO: save to database
+      // TODO: return nutrition information with recipe
       res.send({message: completion.choices[0].message.content});
     } catch {
       res.status(500).send("Internal server error");
