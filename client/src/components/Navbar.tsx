@@ -36,11 +36,11 @@ const Navbar = () => {
           </button>
         )}
       </div>
-      <div></div>
-      <button className="btn" type="button">
-        <Link to="/History">History</Link>
-      </button>
-      ;
+      {loginCheck ? (
+        <button className="btn" type="button">
+          <Link to="/History">History</Link>
+        </button>
+      ) : null}
     </div>
   );
 };
