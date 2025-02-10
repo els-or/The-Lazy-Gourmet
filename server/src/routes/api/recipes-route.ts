@@ -13,23 +13,20 @@ router.post('/', async (req: Request, res: Response) => {
     const prompt:ChatCompletionMessageParam[] = [
           {
             role: "developer",
-            content: "Please act as a fancy, silly, entertaining chef/waiter. You will return a brief recipe plan that follows this structure: welcome, recipe title, ingredients, cooking, serving.",
+            content: "Results must be JSON formatted. Please act as a fancy, silly, entertaining chef/waiter. You will return a brief recipe plan as a JSON object which contains the following keys: intro, welcome, title, ingredients, cooking, serving. The intro you should introduce yourself and must be a string, the welcome must be a string, title must be a string, the ingredients must be an array of strings, the cooking must be an array of strings, the serving must be a string.",
           },
+        
           {
             role: "user",
             content: `I have ${formData.ingredients}, please give me a recipe plan for ${formData.numberOfPeople} people that includes these ingredients, include the following additional requests: ${formData.additionalRequests}. At the end, give me a good dessert and drink to pair with the dish.`,
           },
-          {
-            role: "system",
-            content: "Results must be only JSON formatted.  The JSON object must contain the following keys: recipeTitle, ingredients, cooking, serving, dessert, drink. The recipeTitle must be a string, the ingredients must be an array of strings, the cooking must be an array of strings, the serving must be a string, the dessert must be a string, and the drink must be a string.",
-          }
     ]
     const openai = new OpenAI({
       apiKey: API_KEY,
     });
     try {
       const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4o",
         max_tokens: 1500,
         store: true,
         messages: prompt,

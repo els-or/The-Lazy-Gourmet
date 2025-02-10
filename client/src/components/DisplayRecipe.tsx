@@ -14,7 +14,9 @@ export default function DisplayRecipe(props: any) {
   recipe = JSON.parse(recipe);
   return (
     <div>
-      <h3>{recipe.recipeTitle}</h3>
+      <h3>{recipe.title}</h3>
+      <p>{recipe.intro}</p>
+      <p>{recipe.welcome}</p>
       <h4>Ingredients</h4>
       <ul>
         {recipe.ingredients.map((ingredient: string, index: number) => (
@@ -29,10 +31,6 @@ export default function DisplayRecipe(props: any) {
       </ul>
       <h4>Serving Instructions</h4>
       <p>{recipe.serving}</p>
-      <h4>Dessert</h4>
-      <p>{recipe.dessert}</p>
-      <h4>Drink</h4>
-      <p>{recipe.drink}</p>
     </div>
   );
 }
