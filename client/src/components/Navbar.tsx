@@ -36,12 +36,7 @@ const Navbar = () => {
           </button>
         )}
       </div>
-      <div></div>
-      <button className="btn" type="button">
-        <Link to="/History">History</Link>
-      </button>
-      ;
-    </div>
+      
   );
 };
 
