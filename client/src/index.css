@@ -1,5 +1,22 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-background-primary: #adebb3;
+  --color-text: #6b403c;
+  --color-background-secondary: #ff857a;
+  --color-background-tertiary: #ebaee6BB;
+  --color-background-blue: #5fcfb655;
+  --font-header: 'Charm', serif;
+  --font-body: 'Verdana', sans-serif;
+}
+
+@layer components {
+  .btn {
+    @apply align-middle text-text bg-background-primary hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full h-7;
+  }
+}
+
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -972,117 +989,6 @@ a:hover {
 
 .display-flex {
   display: flex !important;
-}
-
-.btn {
-  text-align: center;
-  display: inline-block;
-  padding: 0.5rem 1.2rem;
-  margin: 0;
-  text-decoration: none;
-  font-size: 1rem;
-  border-radius: 0.3rem;
-  border: 1px solid transparent;
-  outline: none;
-  color: #1a1a1a;
-  background-color: #aeaeae;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-}
-
-.btn:hover {
-  background-color: #cecece;
-}
-
-.btn.btn-squared {
-  border-radius: 0;
-}
-
-.btn.btn-sm {
-  font-size: 0.85rem;
-  padding: 0.3rem 0.9rem;
-}
-
-.btn.btn-lg {
-  font-size: 1.25rem;
-  padding: 0.8rem 1.4rem;
-}
-
-.btn.btn-block {
-  width: 100%;
-  display: block;
-  text-align: center;
-}
-
-.btn.btn-primary {
-  background-color: #2d3e50;
-  color: #d9e9e8;
-}
-
-.btn.btn-primary:hover {
-  background-color: #57779a;
-}
-
-.btn.btn-danger {
-  background-color: #e64c66;
-  color: #ffffff;
-}
-
-.btn.btn-danger:hover {
-  background-color: #ee8294;
-}
-
-.btn.btn-info {
-  background-color: #1bbc9b;
-  color: #ffffff;
-}
-
-.btn.btn-info:hover {
-  background-color: #31e1bd;
-}
-
-.btn.btn-light {
-  background-color: #d9e9e8;
-  color: #1a1a1a;
-}
-
-.btn.btn-light:hover {
-  background-color: #84b8b4;
-}
-
-.btn.btn-dark {
-  background-color: #1a1a1a;
-  color: #d9e9e8;
-}
-
-.btn.btn-dark:hover {
-  background-color: #5f5f5f;
-}
-
-.btn.btn-white {
-  background-color: #ffffff;
-  color: #1a1a1a;
-}
-
-.btn.btn-white:hover {
-  background-color: #cccccc;
-}
-
-.btn.btn-black {
-  background-color: #000000;
-  color: #ffffff;
-}
-
-.btn.btn-black:hover {
-  background-color: #666666;
-}
-
-.btn.btn-link {
-  background-color: #1b89bc;
-  color: #ffffff;
-}
-
-.btn.btn-link:hover {
-  background-color: #31a9e1;
 }
 
 .card {

@@ -17,20 +17,24 @@ const Navbar = () => {
   }, [loginCheck]);
 
   return (
-    <div className="display-flex justify-space-between align-center py-2 px-5 mint-green">
-      <h1>Welcome to Lazy Gourmet Selection Screen!</h1>
+    <div className="display-flex justify-space-between bg-background-secondary p-5">
+      <h1 className="font-header">The Lazy Gourmet</h1>
       <div>
         {!loginCheck ? (
-          <button className="btn" type="button">
-            <Link to="/login">Login</Link>
-          </button>
+          <Link to="/login">
+            <button className="btn w-20 m-2" type="button">
+              Login
+            </button>
+          </Link>
         ) : (
-          <div>
-            <Link to="/history" className="btn">
-              History
+          <div className="display-flex flex-row justify-space-between">
+            <Link to="/history">
+              <button className="btn w-35 m-2" type="button">
+                Recipe History
+              </button>
             </Link>
             <button
-              className="btn"
+              className="btn w-20 m-2"
               type="button"
               onClick={() => {
                 auth.logout();
