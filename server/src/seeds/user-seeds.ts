@@ -14,6 +14,11 @@ export const seedUsers = async () => {
         email: 'radiant@comet.com',
         password: 'password',
       },
+      {
+        username: 'LazyChez',
+        email: 'lazychez@gourmet.com',
+        password: 'password',
+      }
     ],
     { individualHooks: true }
   );

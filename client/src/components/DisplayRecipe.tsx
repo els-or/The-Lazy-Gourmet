@@ -1,9 +1,11 @@
+import { useEffect } from "react";
+
 export default function DisplayRecipe(props: any) {
   if (!props.recipe) {
     return (
-      <div>
-        No recipe to display please submit a request or lookup a recipe from
-        your previous requests.
+      <div className="bg-background-blue mb-25 p-5 text-center mx-auto rounded-lg shadow-xl">
+        No recipe to display, please submit a request or pick a recipe from your
+        recipe history.
       </div>
     );
   }
@@ -12,25 +14,35 @@ export default function DisplayRecipe(props: any) {
   recipe = recipe.replaceAll("```", "");
   recipe = recipe.replace("json", "");
   recipe = JSON.parse(recipe);
+  useEffect(() => {
+    if (props.recipe) {
+      document.getElementById("recipeDivider")?.scrollIntoView(true);
+    }
+  });
   return (
-    <div>
-      <h3>{recipe.title}</h3>
+    <div className="bg-background-blue p-5 text-center mx-auto rounded-lg shadow-xl">
+      <h3 className="font-header">{recipe.title}</h3>
       <p>{recipe.intro}</p>
       <p>{recipe.welcome}</p>
-      <h4>Ingredients</h4>
+      <h4 className="font-header">Ingredients</h4>
       <ul>
         {recipe.ingredients.map((ingredient: string, index: number) => (
           <li key={index}>{ingredient}</li>
         ))}
       </ul>
-      <h4>Cooking Steps</h4>
+      <h4 className="font-header">Cooking Steps</h4>
       <ul>
         {recipe.cooking.map((step: string, index: number) => (
           <li key={index}>{step}</li>
         ))}
       </ul>
-      <h4>Serving Instructions</h4>
+      <h4 className="font-header">Serving Instructions</h4>
       <p>{recipe.serving}</p>
+      <img
+        src="/chef.png"
+        alt="clipart of a gourmet chef"
+        className="h-60 mx-auto bottom-0 right-0"
+      />
     </div>
   );
 }
