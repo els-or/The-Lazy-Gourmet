@@ -25,18 +25,23 @@ const Navbar = () => {
             <Link to="/login">Login</Link>
           </button>
         ) : (
-          <button
-            className="btn"
-            type="button"
-            onClick={() => {
-              auth.logout();
-            }}
-          >
-            Logout
-          </button>
+          <div>
+            <Link to="/history" className="btn">
+              History
+            </Link>
+            <button
+              className="btn"
+              type="button"
+              onClick={() => {
+                auth.logout();
+              }}
+            >
+              Logout
+            </button>
+          </div>
         )}
       </div>
-      
+    </div>
   );
 };
 
