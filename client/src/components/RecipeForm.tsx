@@ -17,18 +17,23 @@ export default function RecipeForm(props: object) {
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const [additionalRequests, setAdditionalRequests] = useState("");
   const [sayPlease, setSayPlease] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    try {
-      const recipe = await createRecipe({
-        ingredients,
-        numberOfPeople,
-        additionalRequests,
-      });
-      props.updateRecipe(recipe);
-    } catch (error) {
-      console.error("Failed to create recipe:", error);
+    if (!submitted) {
+      setSubmitted(true);
+      try {
+        const recipe = await createRecipe({
+          ingredients,
+          numberOfPeople,
+          additionalRequests,
+        });
+        props.updateRecipe(recipe);
+        setSubmitted(false);
+      } catch (error) {
+        console.error("Failed to create recipe:", error);
+      }
     }
   };
 
@@ -90,7 +95,7 @@ export default function RecipeForm(props: object) {
 
       <br />
       <button type="submit" className="btn">
-        Submit
+        {submitted ? "Hold your fork.." : "Submit"}
       </button>
     </form>
   );

@@ -1,7 +1,9 @@
+import { useEffect } from "react";
+
 export default function DisplayRecipe(props: any) {
   if (!props.recipe) {
     return (
-      <div className="bg-background-blue p-5 text-center mx-auto rounded-lg shadow-xl">
+      <div className="bg-background-blue mb-25 p-5 text-center mx-auto rounded-lg shadow-xl">
         No recipe to display, please submit a request or pick a recipe from your
         recipe history.
       </div>
@@ -12,8 +14,13 @@ export default function DisplayRecipe(props: any) {
   recipe = recipe.replaceAll("```", "");
   recipe = recipe.replace("json", "");
   recipe = JSON.parse(recipe);
+  useEffect(() => {
+    if (props.recipe) {
+      document.getElementById("recipeDivider")?.scrollIntoView(true);
+    }
+  });
   return (
-    <div className="bg-background-blue pb-60 p-5 text-center mx-auto rounded-lg shadow-xl">
+    <div className="bg-background-blue p-5 text-center mx-auto rounded-lg shadow-xl">
       <h3 className="font-header">{recipe.title}</h3>
       <p>{recipe.intro}</p>
       <p>{recipe.welcome}</p>

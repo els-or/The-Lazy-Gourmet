@@ -78,7 +78,10 @@ const Home = () => {
             below!
           </h4>
           <RecipeForm updateRecipe={updateRecipe} />
-          <hr className="w-48 h-1 mx-auto my-4 rounded-sm md:my-10" />
+          <hr
+            id="recipeDivider"
+            className="w-48 h-1 mx-auto my-4 rounded-sm md:my-10"
+          />
           <DisplayRecipe recipe={recipe} />
           {/* <UserList users = {users} /> */}
         </div>
