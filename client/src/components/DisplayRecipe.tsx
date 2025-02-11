@@ -6,7 +6,7 @@ export default function DisplayRecipe(props: any) {
     title: "",
     ingredients: [],
     cooking: [],
-    serving: "",
+    serving: [],
     intro: "",
     welcome: "",
   });
@@ -47,6 +47,24 @@ export default function DisplayRecipe(props: any) {
       <h3 className="font-header">{recipe.title}</h3>
       <p>{recipe.intro}</p>
       <p>{recipe.welcome}</p>
+      <h4 className="font-header">Ingredients</h4>
+      <ul>
+        {recipe.ingredients.map((ingredient: string, index: number) => (
+          <li key={index}>{ingredient}</li>
+        ))}
+      </ul>
+      <h4 className="font-header">Cooking Steps</h4>
+      <ul>
+        {recipe.cooking.map((step: string, index: number) => (
+          <li key={index}>{step}</li>
+        ))}
+      </ul>
+      <h4 className="font-header">Serving Instructions</h4>
+      <ul>
+        {recipe.serving.map((step: string, index: number) => (
+          <li key={index}>{step}</li>
+        ))}
+      </ul>
       <h3 className="font-header">Nutrition Facts</h3>
       <table className="table-auto mx-auto pb-5">
         <thead>
@@ -74,20 +92,6 @@ export default function DisplayRecipe(props: any) {
           })}
         </tbody>
       </table>
-      <h4 className="font-header">Ingredients</h4>
-      <ul>
-        {recipe.ingredients.map((ingredient: string, index: number) => (
-          <li key={index}>{ingredient}</li>
-        ))}
-      </ul>
-      <h4 className="font-header">Cooking Steps</h4>
-      <ul>
-        {recipe.cooking.map((step: string, index: number) => (
-          <li key={index}>{step}</li>
-        ))}
-      </ul>
-      <h4 className="font-header">Serving Instructions</h4>
-      <p>{recipe.serving}</p>
       <img
         src="/chef.png"
         alt="clipart of a gourmet chef"
