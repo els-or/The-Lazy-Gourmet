@@ -11,21 +11,21 @@ const router = express.Router();
 
 
 //POST /create new receipe
-router.post('/', async (req: Request, res: Response) =>{
+// router.post('/', async (req: Request, res: Response) =>{
 
-    try{
+//     try{
 
-        const newRecipe = await Recipe.create(req.body); //using Sequelize method.
+//         const newRecipe = await Recipe.create(req.body); //using Sequelize method.
 
-        //if success, then send created(201) and JSON response. 
-        res.status(201).json(newRecipe);
-    }
-    catch(err)
-    {    //failed to create recipe
-        res.status(500).json({err: 'Internal Server Error, recipe creation failed'});
+//         //if success, then send created(201) and JSON response. 
+//         res.status(201).json(newRecipe);
+//     }
+//     catch(err)
+//     {    //failed to create recipe
+//         res.status(500).json({err: 'Internal Server Error, recipe creation failed'});
 
-    }
-});
+//     }
+// });
 
  //Get /recipe - retrieve entire recipes
  router.get('/', async (_req: Request, res: Response) =>{
