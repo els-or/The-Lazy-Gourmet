@@ -3,6 +3,7 @@ import { useState, type FormEvent, type ChangeEvent } from "react";
 import Auth from "../utils/auth";
 import { login } from "../api/authAPI";
 import type { UserLogin } from "../interfaces/UserLogin";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [loginData, setLoginData] = useState<UserLogin>({
@@ -33,7 +34,7 @@ const Login = () => {
   return (
     <div className="form-container bg-background-tertiary p-5 mx-auto rounded-lg shadow-xl">
       <form className="form login-form" onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <h1 className="font-header">Login</h1>
         <div className="form-group">
           <label>Username</label>
           <input
@@ -62,6 +63,14 @@ const Login = () => {
           </button>
         </div>
       </form>
+      <div>
+        <p>
+          Don't have an account?{" "}
+          <Link to="/register" className="text-primary">
+            Sign Up
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

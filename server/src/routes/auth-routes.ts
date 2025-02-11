@@ -3,6 +3,30 @@ import { User } from '../models/user.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
+//register a user.
+export const register = async (req: Request, res: Response) => {
+  const { username, email, password } = req.body; //getting data from client.
+  //check if username already exists.
+  const existingUser = await User.findOne({
+    where: { username },
+  });
+  if (existingUser) {
+    return res.status(409).json({ message: 'Username already exists' });
+  }
+  //create a new user in the database.
+  try {
+    await User.create({
+      username,
+      email,
+      password,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Error creating user' });
+  }
+  return res.status(201).json({ message: 'User created successfully' });
+};
+
 //login server.
 export const login = async (req: Request, res: Response) => {
   const { username, password } = req.body;  //getting data from client.
@@ -33,4 +57,5 @@ const router = Router(); //create new instance of Router()
 // POST /login - Login a user
 router.post('/login', login);
 
+router.post('/register', register)
 export default router;
