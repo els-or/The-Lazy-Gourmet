@@ -2,6 +2,7 @@ import OpenAI from "openai";
 import express from 'express';
 import type { Request, Response } from 'express';
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { Recipe } from "../../models/recipe.js";
 
 const router = express.Router();
 //const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
@@ -32,11 +33,15 @@ router.post('/', async (req: Request, res: Response) => {
         messages: prompt,
       });
       console.log(completion.choices[0].message.content)
+      await Recipe.create({
+        entryDate: new Date(),
+        recipeData: completion.choices[0].message.content
+      })
       res.send({
         message: completion.choices[0].message.content
       });
-    } catch {
-      res.status(500).send("Internal server error");
+    } catch(err) {
+      res.status(500).send(err);
     }
     
 });

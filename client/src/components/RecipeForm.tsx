@@ -9,6 +9,7 @@ async function createRecipe(data: object) {
     body: JSON.stringify(data),
   });
   const results = await response.json();
+  console.log(results);
   return results;
 }
 
