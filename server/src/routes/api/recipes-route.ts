@@ -13,12 +13,12 @@ router.post('/', async (req: Request, res: Response) => {
     const prompt:ChatCompletionMessageParam[] = [
           {
             role: "developer",
-            content: "Results must be JSON formatted. Please act as a fancy, silly, entertaining chef/waiter. You will return a brief recipe plan as a JSON object which contains the following keys: intro, welcome, title, ingredients, cooking, serving. The intro you should introduce yourself and must be a string, the welcome must be a string, title must be a string, the ingredients must be an array of strings, the cooking must be an array of strings, the serving must be a string.",
+            content: "Results must be JSON formatted. Please act as a fancy, silly, entertaining chef/waiter. You will return a brief recipe plan as a JSON object which contains the following keys: intro, welcome, title, ingredients, cooking, serving, outro. intro you should quickly introduce yourself with a creative chef name and must be a string; welcome must be a string; title must be a string; ingredients you should include required measurements and expand the food descriptions with poetic detail while you teach a bit of history or culture behind each, it must be an array of strings; cooking you should display a list of steps, each step should follow the format '*emoji* Step _:', each step should focus on nutritional benefits, safety tips, and precise ingredient measurements, must be an array of strings; serving must be an array of strings which includes serving instructions and the dessert/drink pairings; outro must be a string. Each string should start with a single emoji. Add food safety handling messages where necesary include washing hands, separating raw and cooked foods, cooking to safe temperatures, and refrigerating promptly.",
           },
         
           {
             role: "user",
-            content: `I have ${formData.ingredients}, please give me a recipe plan for ${formData.numberOfPeople} people that includes these ingredients, include the following additional requests: ${formData.additionalRequests}. At the end, give me a good dessert and drink to pair with the dish.`,
+            content: `I have ${formData.ingredients}, please give me a recipe plan for ${formData.numberOfPeople} people using these ingredients, include the following additional requests: ${formData.additionalRequests}. At the end, give me a good dessert and drink to pair with the dish.`,
           },
     ]
     const openai = new OpenAI({
@@ -32,9 +32,6 @@ router.post('/', async (req: Request, res: Response) => {
         messages: prompt,
       });
       console.log(completion.choices[0].message.content)
-      // TODO: look up nutrition information
-      // TODO: save to database
-      // TODO: return nutrition information with recipe
       res.send({
         message: completion.choices[0].message.content
       });
