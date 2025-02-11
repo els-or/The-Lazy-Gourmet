@@ -1,4 +1,21 @@
 import fetch from "node-fetch"; // Ensure node-fetch is installed 
+import type { Request, Response } from 'express';
+import express from 'express';
+
+const router = express.Router();
+
+router.post('/', async (req: Request, res: Response) => {
+    const ingredients = req.body.ingredients;
+    if (!ingredients) {
+        return res.status(200).send("Please provide ingredients");
+    }
+    console.log(ingredients)
+    const nutritionInfo = await getNutritionFactsForIngredients(...ingredients);
+    return res.send({
+        nutritionInfo: nutritionInfo
+    });
+})
+
 
 // Define the structure for a nutrient
 interface Nutrient {
@@ -22,7 +39,7 @@ interface USDAApiResponse {
 async function getNutritionFactsForIngredients(
   ...ingredients: string[]
 ): Promise<Record<string, string>[]> {
-  const apiKey = "kfGIKkACpvXZlwfV8rsjCV2Ll1ZWq4OLd1vqfjBp"; // Replace with your USDA API key 
+  const apiKey = process.env.USDA_API_KEY; // Replace with your USDA API key 
 
   // Define the nutrients we want to extract
   const requiredNutrients: string[] = [
@@ -81,7 +98,4 @@ async function getNutritionFactsForIngredients(
   return results;
 }
 
-// Example usage (now supports any number of ingredients)
-getNutritionFactsForIngredients("1/2 cup of strawberries");
-
-// TO USE: PLUG IN KEY, RUN COMMANDS npm i, npm run build && npm start
+export { router as nutritionRouter };

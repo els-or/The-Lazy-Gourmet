@@ -31,11 +31,13 @@ router.post('/', async (req: Request, res: Response) => {
         store: true,
         messages: prompt,
       });
-      console.log(completion)
+      console.log(completion.choices[0].message.content)
       // TODO: look up nutrition information
       // TODO: save to database
       // TODO: return nutrition information with recipe
-      res.send({message: completion.choices[0].message.content});
+      res.send({
+        message: completion.choices[0].message.content
+      });
     } catch {
       res.status(500).send("Internal server error");
     }
