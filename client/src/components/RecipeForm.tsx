@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+type updateRecipeType = (recipe: object) => void;
+
 async function createRecipe(data: object) {
   const response = await fetch("/api/recipe", {
     method: "POST",
@@ -13,7 +15,7 @@ async function createRecipe(data: object) {
   return results;
 }
 
-export default function RecipeForm(props: { updateRecipe: Function }) {
+export default function RecipeForm(props: { updateRecipe: updateRecipeType }) {
   const [ingredients, setIngredients] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const [additionalRequests, setAdditionalRequests] = useState("");
