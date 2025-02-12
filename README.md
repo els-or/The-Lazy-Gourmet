@@ -6,14 +6,16 @@
 
   Have you ever found yourself stuck at home with a few sparse ingredients, unsure of how to combine them into a culinary masterpiece? Well look no further than The Lazy Gourmet! Our wonderful lineup of charismatic AI chefs would be happy to whip up a recipe to suit your exact situation.
 
+  ![](demo-screenshot.jpg)
+
   ## Table of Contents
 
   - [Installation](#installation)
   - [Usage](#usage)
   - [License](#license)
-  - [Contributing](#contributing)
+  - [Contributors](#contributors)
   - [Tests](#tests)
-  - [Questions](#questions)
+  - [Future Development](#future-development)
 
   ## Installation
 
@@ -23,26 +25,32 @@
 
   To use this application, simply fill out the fields in the form on the landing page and watch a new recipe populate below.
   
-  [Demo Video](https://drive.google.com/file/d/1XagmFmqI11Ck2lY6kF10CDGU4sqcMPEw/view?usp=sharing) 
+  [Demo Video](/The%20Lazy%20Gourmet%20Demo.mp4) 
 
   ## License
 
   This application is covered under the [MIT](https://opensource.org/licenses/MIT) license.
 
-  ## Contributing
+  ## Contributors
 
-  Contributions may be submitted via our GitHub repo.
+  [els-or](https://github.com/els-or)
+
+  [lunledev](https://github.com/lunledev)
+
+  [michaelhdavies](https://github.com/michaelhdavies)
+
+  [SayedMK](https://github.com/SayedMK)
 
   ## Tests
 
   Load up the application following the installation process and watch the console for any errors.
 
-  ## Questions
+  ## Future Development
   
-  Find more info and contact the devs via our GitHub repo.
+  Keep up with future updates on the GitHub repo.
 
   GitHub: [The-Lazy-Gourmet](https://github.com/els-or/The-Lazy-Gourmet)
 
-  [Back to Top](#description)
+  [Back to Top](#the-lazy-gourmet)
   
   
