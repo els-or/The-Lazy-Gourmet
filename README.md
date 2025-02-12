@@ -25,7 +25,7 @@
 
   To use this application, simply fill out the fields in the form on the landing page and watch a new recipe populate below.
   
-  [Demo Video](/The%20Lazy%20Gourmet%20Demo.mp4) 
+  [Demo Video](https://drive.google.com/file/d/1XagmFmqI11Ck2lY6kF10CDGU4sqcMPEw/view?usp=sharing) 
 
   ## License
 
