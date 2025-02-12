@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-type updateRecipeType = (recipe: object) => void;
+type updateRecipeType = (recipe: string) => void;
 
 async function createRecipe(data: object) {
   const response = await fetch("/api/recipe", {
