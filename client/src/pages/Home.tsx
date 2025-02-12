@@ -13,9 +13,9 @@ const Home = () => {
   const [error, setError] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
 
-  const [recipe, setRecipe] = useState<string>();
+  const [recipe, setRecipe] = useState<object>();
 
-  function updateRecipe(data: string) {
+  function updateRecipe(data: object) {
     setRecipe(data);
   }
 
