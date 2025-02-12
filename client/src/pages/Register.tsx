@@ -1,4 +1,5 @@
 import { useState, type FormEvent, type ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [userData, setUserData] = useState<{
@@ -6,7 +7,7 @@ const Register = () => {
     email?: string | undefined;
     password?: string | undefined;
   }>({});
-
+  const navigate = useNavigate();
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
@@ -18,7 +19,8 @@ const Register = () => {
         body: JSON.stringify(userData),
       });
       // go to login page
-      window.location.href = "/login";
+
+      navigate("/login");
     } catch (err) {
       console.error("Failed to register user", err);
     }
