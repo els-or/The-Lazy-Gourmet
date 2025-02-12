@@ -47,6 +47,8 @@
 
   ## Future Development
   
+  Use the app through the [render deployment](https://the-lazy-gourmet.onrender.com/ ).
+
   Keep up with future updates on the GitHub repo.
 
   GitHub: [The-Lazy-Gourmet](https://github.com/els-or/The-Lazy-Gourmet)
